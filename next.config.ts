@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
 	compiler: {
 		styledComponents: true,
 	},
+	async redirects() {
+		return [
+			{
+				source: '/',
+				destination: '/search',
+				permanent: true,
+			},
+		];
+	},
 };
 
 export default nextConfig;

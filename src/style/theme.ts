@@ -16,6 +16,8 @@ export const theme: DefaultTheme = {
 		small: '0.875rem',
 		medium: '1rem',
 		large: '1.25rem',
+		xLarge: '1.5rem',
+		xxLarge: '2rem',
 	},
 };
 
