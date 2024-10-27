@@ -14,10 +14,6 @@ export const Li = styled.li`
 	display: flex;
 	justify-content: space-between;
 
-	&:last-child {
-		border-bottom: none;
-	}
-
 	&:hover {
 		background-color: ${theme.colors.hover};
 	}

@@ -11,9 +11,7 @@ export const StyledInput = styled.input`
 	border-radius: 5px;
 	outline: none;
 	box-shadow: none;
-	transition:
-		border-color 0.15s ease-in-out,
-		box-shadow 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
 
 	&:focus {
 		border-color: ${theme.colors.primary};

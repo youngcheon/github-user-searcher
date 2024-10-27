@@ -3,6 +3,7 @@ import List from '@/components/atoms/list/list';
 import BookmarkButton from '@/components/atoms/button/bookmark-button';
 import { useBookmarks } from '@/hooks';
 import * as S from './styled';
+import { Avatar } from '@/components/atoms/avatar';
 
 const BookmarksView: React.FC = () => {
 	const { getBookmarkedUsers, removeBookmark } = useBookmarks();
@@ -15,7 +16,7 @@ const BookmarksView: React.FC = () => {
 					{bookmarkedUsers?.map((user) => (
 						<List.Item key={user.id}>
 							<S.UserInfo>
-								<S.Avatar
+								<Avatar
 									src={user.avatar_url}
 									alt={user.login}
 									width={32}
