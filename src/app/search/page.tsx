@@ -1,12 +1,13 @@
 'use client';
 
 import React from 'react';
-import { MainLayout } from '@/components/layout';
+import { MainLayout } from '@/components/templates/layout';
+import SearchView from '@/components/organisms/search/search-view';
 
 const SearchPage: React.FC = () => {
 	return (
 		<MainLayout>
-			<h1>검색</h1>
+			<SearchView />
 		</MainLayout>
 	);
 };

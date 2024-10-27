@@ -38,12 +38,6 @@ export const Content = styled.main`
 	padding: 2rem;
 `;
 
-export const Footer = styled.footer`
-	padding: 1rem;
-	background-color: ${({ theme }) => theme.colors.hover};
-	text-align: center;
-`;
-
 export const NavList = styled.ul`
 	display: flex;
 	list-style-type: none;
