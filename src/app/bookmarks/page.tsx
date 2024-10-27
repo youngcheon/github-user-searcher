@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { MainLayout } from '@/components/templates/layout';
+import BookmarksView from '@/components/organisms/bookmarks/bookmarks-view';
 
 const BookmarkPage: React.FC = () => {
 	return (
 		<MainLayout>
-			<h1>북마크</h1>
+			<BookmarksView />
 		</MainLayout>
 	);
 };

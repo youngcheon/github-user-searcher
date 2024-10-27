@@ -17,6 +17,11 @@ class GithubApi {
 		const response = await this.axiosInstance.get(`/search/users?${query}`);
 		return response.data.items;
 	}
+
+	async getUserById(userId: number): Promise<User> {
+		const response = await this.axiosInstance.get(`/user/${userId}`);
+		return response.data;
+	}
 }
 
 export default GithubApi;

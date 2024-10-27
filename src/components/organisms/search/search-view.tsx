@@ -1,16 +1,17 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import Input from '@/components/atoms/input';
 import List from '@/components/atoms/list/list';
 import BookmarkButton from '@/components/atoms/button/bookmark-button';
+import { useBookmarks, useSearchUsersQuery } from '@/hooks';
 import * as S from './styled';
-import { useSearchUsersQuery } from '@/hooks';
-import { useInView } from 'react-intersection-observer';
 
 const SearchView: React.FC = () => {
 	const [query, setQuery] = useState('');
 	const { data, fetchNextPage, isFetchingNextPage } =
 		useSearchUsersQuery(query);
 	const { ref, inView } = useInView();
+	const { addBookmark, removeBookmark, isBookmarked } = useBookmarks();
 
 	useEffect(() => {
 		if (inView) {
@@ -22,10 +23,19 @@ const SearchView: React.FC = () => {
 		setQuery(event.target.value);
 	};
 
+	const handleBookmarkToggle = (userId: number) => {
+		if (isBookmarked(userId)) {
+			removeBookmark(userId);
+		} else {
+			addBookmark(userId);
+		}
+	};
+
 	return (
 		<S.Container>
 			<S.Wrapper>
 				<Input value={query} onChange={handleInputChange} />
+
 				<List>
 					{data?.pages.flatMap((page) =>
 						page.map((user) => (
@@ -39,7 +49,10 @@ const SearchView: React.FC = () => {
 									/>
 									<span>{user.login}</span>
 								</S.UserInfo>
-								<BookmarkButton isBookmarked={false} />
+								<BookmarkButton
+									isBookmarked={isBookmarked(user.id)}
+									onClick={() => handleBookmarkToggle(user.id)}
+								/>
 							</List.Item>
 						)),
 					)}
