@@ -3,15 +3,16 @@ import { useInView } from 'react-intersection-observer';
 import Input from '@/components/atoms/input';
 import List from '@/components/atoms/list/list';
 import BookmarkButton from '@/components/atoms/button/bookmark-button';
-import { useBookmarks, useSearchUsersQuery } from '@/hooks';
+import { useBookmarks, useDebounce, useSearchUsersQuery } from '@/hooks';
 import * as S from './styled';
 import { LoadingIndicator } from '@/components/atoms/loading-indicator';
 import { Avatar } from '@/components/atoms/avatar';
 
 const SearchView: React.FC = () => {
 	const [query, setQuery] = useState('');
-	const { data, fetchNextPage, isFetchingNextPage } =
-		useSearchUsersQuery(query);
+	const debouncedQuery = useDebounce(query, 500);
+	const { data, fetchNextPage, isFetchingNextPage, isFetching } =
+		useSearchUsersQuery(debouncedQuery);
 	const { ref, inView } = useInView();
 	const { addBookmark, removeBookmark, isBookmarked } = useBookmarks();
 
@@ -60,10 +61,8 @@ const SearchView: React.FC = () => {
 							</React.Fragment>
 						)),
 					)}
-					{isFetchingNextPage ? (
-						<S.LoadingWrapper>
-							<LoadingIndicator />
-						</S.LoadingWrapper>
+					{isFetchingNextPage || isFetching ? (
+						<LoadingIndicator />
 					) : (
 						<div ref={ref} />
 					)}
