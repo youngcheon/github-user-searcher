@@ -28,8 +28,3 @@ export const UserInfo = styled.div`
 	align-items: center;
 	gap: 10px;
 `;
-
-export const LoadingWrapper = styled.div`
-	display: flex;
-	justify-content: center;
-`;

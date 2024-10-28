@@ -14,3 +14,8 @@ export const Spinner = styled.div`
 	border-radius: 50%;
 	animation: ${spin} 1s linear infinite;
 `;
+
+export const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+`;
