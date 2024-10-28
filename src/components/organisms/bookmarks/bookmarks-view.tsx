@@ -4,10 +4,15 @@ import BookmarkButton from '@/components/atoms/button/bookmark-button';
 import { useBookmarks } from '@/hooks';
 import * as S from './styled';
 import { Avatar } from '@/components/atoms/avatar';
+import { LoadingIndicator } from '@/components/atoms/loading-indicator';
 
 const BookmarksView: React.FC = () => {
-	const { getBookmarkedUsers, removeBookmark } = useBookmarks();
+	const { getBookmarkedUsers, removeBookmark, isLoading } = useBookmarks();
 	const bookmarkedUsers = getBookmarkedUsers();
+
+	if (isLoading) {
+		return <LoadingIndicator />;
+	}
 
 	return (
 		<S.Container>
