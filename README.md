@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GitHub User Search
 
-## Getting Started
+GitHub API를 사용하여 사용자를 검색하고 북마크할 수 있는 프로젝트입니다.
 
-First, run the development server:
+##  미리보기
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![미리보기](public/preview.gif)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 실행 방법
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. 프로젝트를 클론합니다:
+   ```
+   git clone https://github.com/youngcheon/github-user-searcher.git
+   ```
 
-## Learn More
+2. 프로젝트 디렉토리로 이동합니다:
+   ```
+   cd github-user-searcher
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. 의존성 패키지를 설치합니다:
+   ```
+   yarn install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. 개발 서버를 실행합니다:
+   ```
+   yarn dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. 브라우저에서 [http://localhost:3000](http://localhost:3000)을 열기
 
-## Deploy on Vercel
+## 구현 사항
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **사용자 검색**: GitHub 사용자를 실시간으로 검색할 수 있습니다.
+2. **무한 스크롤**: 검색 결과를 스크롤하여 더 많은 사용자를 로드할 수 있습니다.
+3. **북마크 기능**: 관심 있는 사용자를 북마크에 추가하거나 제거할 수 있습니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 기술 스택
+
+- Next.js
+- React
+- TypeScript
+- Styled Components
+- React Query
