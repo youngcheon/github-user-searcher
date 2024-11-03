@@ -1,9 +1,13 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import React, { useState, ChangeEvent } from 'react';
 import Input from '@/components/atoms/input';
 import List from '@/components/atoms/list/list';
 import BookmarkButton from '@/components/atoms/button/bookmark-button';
-import { useBookmarks, useDebounce, useSearchUsersQuery } from '@/hooks';
+import {
+	useBookmarks,
+	useCustomInView,
+	useDebounce,
+	useSearchUsersQuery,
+} from '@/hooks';
 import * as S from './styled';
 import { LoadingIndicator } from '@/components/atoms/loading-indicator';
 import { Avatar } from '@/components/atoms/avatar';
@@ -13,14 +17,8 @@ const SearchView: React.FC = () => {
 	const debouncedQuery = useDebounce(query, 500);
 	const { data, fetchNextPage, isFetchingNextPage, isFetching } =
 		useSearchUsersQuery(debouncedQuery);
-	const { ref, inView } = useInView();
+	const { ref } = useCustomInView({ onView: fetchNextPage });
 	const { addBookmark, removeBookmark, isBookmarked } = useBookmarks();
-
-	useEffect(() => {
-		if (inView) {
-			fetchNextPage();
-		}
-	}, [inView, fetchNextPage]);
 
 	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setQuery(event.target.value);
