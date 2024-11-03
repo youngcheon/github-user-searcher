@@ -18,6 +18,9 @@ const nextConfig: NextConfig = {
 	images: {
 		domains: ['github.com', 'avatars.githubusercontent.com'],
 	},
+	experimental: {
+		reactCompiler: true,
+	},
 };
 
 export default nextConfig;
